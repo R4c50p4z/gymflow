@@ -1,0 +1,22 @@
+digraph G {
+  rankdir=LR; fontname="Helvetica"; node [shape=box, style="rounded,filled", fontname="Helvetica", fillcolor="#ffffff"]; edge [color="#555555"];
+  label="GymFlow — Mapa de navegació"; labelloc=t; fontsize=20;
+
+  subgraph cluster_rec { label="GymFlow Recepció (escriptori)"; style="rounded,filled"; fillcolor="#e8f0fe";
+    r_login [label="Inici de sessió"]; r_tauler [label="Tauler", fillcolor="#c6dafc"];
+    r_socis [label="Socis"]; r_llista [label="Llista de socis"]; r_fitxa [label="Fitxa de soci"]; r_alta [label="Alta de soci", fillcolor="#fde7c8"];
+    r_classes [label="Classes"]; r_cal [label="Calendari"]; r_det [label="Detall de classe"];
+    r_acces [label="Control d'accés"]; r_conf [label="Configuració"];
+    r_login -> r_tauler; r_tauler -> r_socis; r_tauler -> r_classes; r_tauler -> r_acces; r_tauler -> r_conf;
+    r_socis -> r_llista; r_socis -> r_alta; r_llista -> r_fitxa;
+    r_classes -> r_cal; r_cal -> r_det;
+  }
+
+  subgraph cluster_soci { label="GymFlow Soci (mòbil)"; style="rounded,filled"; fillcolor="#e6f4ea";
+    s_login [label="Inici de sessió"]; s_inici [label="Inici", fillcolor="#c8e6c9"];
+    s_res [label="Reserves"]; s_cal [label="Calendari de reserves", fillcolor="#fde7c8"]; s_mev [label="Les meves reserves"];
+    s_rut [label="La meva rutina"]; s_prog [label="Progrés"]; s_perf [label="Perfil"];
+    s_login -> s_inici; s_inici -> s_res; s_inici -> s_rut; s_inici -> s_prog; s_inici -> s_perf;
+    s_res -> s_cal; s_res -> s_mev;
+  }
+}
